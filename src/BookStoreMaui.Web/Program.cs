@@ -1,6 +1,11 @@
 using BookStoreMaui.Web.Components;
+using BookStoreMaui.Web.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("BookStoreMaui");
+builder.Services.AddDbContext<BookContext>(options => options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
