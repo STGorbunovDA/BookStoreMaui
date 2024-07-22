@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
+@* <div class="page">
     <div class="sidebar">
         <NavMenu />
     </div>
@@ -14,4 +14,25 @@
             @Body
         </article>
     </main>
+</div> *@
+
+<NavMenu />
+
+<div class="container-fluid bg-main">
+    <div class="container d-flex flex-column justify-content-center align-items-center p-5">
+       <SectionOutlet SectionName="PageTitle" />
+    </div>
+
+</div>
+
+@Body
+
+<hr />
+
+<div class="container">
+    <footer class="d-flex align-items-center justify-content-center">
+        <p>
+            &copy; @DateTime.Today.Year - BookStoreMaui | Developed by <a href="https://t.me/DA_Gorbunov" target="_blank">Dmitriy Gorbunov</a>
+        </p>
+    </footer>
 </div>
