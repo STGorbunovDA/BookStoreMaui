@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("BookStoreMaui");
-builder.Services.AddDbContext<BookContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContextFactory<BookContext>(options => options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
+
+builder.Services.AddTransient<BookContext, BookContext>();
 
 var app = builder.Build();
 
