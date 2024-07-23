@@ -54,11 +54,11 @@
                     @foreach (var b in _popularBooks)
                     {
                         <div class="popular-book-item">
-                            <a href="/book/@b.Id" title="@b.Title">
+                            <a href="/books/@b.Id" title="@b.Title">
                                 <img src="@b.Image" alt="@b.Title" class="me-3"/>
                             </a>
                             <div class="d-flex flex-column justify-content-center">
-                                <a href="/book/@b.Id" class="book-title" title="@b.Title">@b.Title</a>
+                                <a href="/books/@b.Id" class="book-title" title="@b.Title">@b.Title</a>
                                 <a href="/authors/@b.Author.Slug/books" title="Books by @b.Author.Name" class="book-author">
                                     by @b.Author.Name
                                 </a>
