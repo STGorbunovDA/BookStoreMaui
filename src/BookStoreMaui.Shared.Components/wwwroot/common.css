@@ -11,7 +11,11 @@ html, body, * {
 }
 
 html, body {
-    background-color: #f0f5fb; 
+    background-color: #f0f5fb;
+}
+
+a {
+    text-decoration: none;
 }
 
 .bg-main {
@@ -28,4 +32,10 @@ html, body {
 
 .text-main {
     color: var(--color-main);
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 20px;
+    color: #444;
 }

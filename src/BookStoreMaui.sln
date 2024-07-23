@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreMaui.Web", "BookStoreMaui.Web\BookStoreMaui.Web.csproj", "{D22A1024-3DCA-4F28-B8D0-84D9AD24D5C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreMaui.Web", "BookStoreMaui.Web\BookStoreMaui.Web.csproj", "{D22A1024-3DCA-4F28-B8D0-84D9AD24D5C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreMaui.Mobile", "BookStoreMaui.Mobile\BookStoreMaui.Mobile.csproj", "{30BFA56B-FB82-44D0-8471-CD7591014742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreMaui.Mobile", "BookStoreMaui.Mobile\BookStoreMaui.Mobile.csproj", "{30BFA56B-FB82-44D0-8471-CD7591014742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreMaui.Shared", "BookStoreMaui.Shared\BookStoreMaui.Shared.csproj", "{C108D319-C5E9-4790-A5A0-B322CFEC68C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreMaui.Shared", "BookStoreMaui.Shared\BookStoreMaui.Shared.csproj", "{C108D319-C5E9-4790-A5A0-B322CFEC68C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreMaui.Shared.Components", "BookStoreMaui.Shared.Components\BookStoreMaui.Shared.Components.csproj", "{E4542A92-57CC-48A1-9A96-5F6AD467B812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreMaui.Shared.Components", "BookStoreMaui.Shared.Components\BookStoreMaui.Shared.Components.csproj", "{E4542A92-57CC-48A1-9A96-5F6AD467B812}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {971B042D-9D55-4B80-B854-9C836A6C1878}
 	EndGlobalSection
 EndGlobal

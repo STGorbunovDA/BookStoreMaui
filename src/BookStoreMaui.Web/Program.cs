@@ -1,5 +1,7 @@
+using BookStoreMaui.Shared.Interfaces;
 using BookStoreMaui.Web.Components;
 using BookStoreMaui.Web.Data;
+using BookStoreMaui.Web.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +12,7 @@ builder.Services.AddDbContextFactory<BookContext>(options => options.UseSqlServe
 // Add services to the container.
 builder.Services.AddRazorComponents();
 
-builder.Services.AddTransient<BookContext, BookContext>();
+builder.Services.AddTransient<IBookService, BookService>();
 
 var app = builder.Build();
 
@@ -27,6 +29,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-app.MapRazorComponents<App>();
+app.MapRazorComponents<App>()
+    .AddAdditionalAssemblies(typeof(BookStoreMaui.Shared.Components.Pages.Books).Assembly);
 
 app.Run();
