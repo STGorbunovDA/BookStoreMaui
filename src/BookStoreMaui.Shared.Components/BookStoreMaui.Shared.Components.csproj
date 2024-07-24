@@ -19,8 +19,4 @@
     <ProjectReference Include="..\BookStoreMaui.Shared\BookStoreMaui.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Shared\" />
-  </ItemGroup>
-
 </Project>
