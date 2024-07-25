@@ -6,7 +6,7 @@ namespace BookStoreMaui.Web
     {
         public static IEndpointRouteBuilder MapBookEndpoints(this IEndpointRouteBuilder app)
         {
-            app.MapGet("/api/books/{bookId:int}",
+            app.MapGet("/api/book/{bookId:int}",
                 async (int bookId, IBookService bookService) =>
                     TypedResults.Ok(await bookService.GetBookAsync(bookId)));
 
