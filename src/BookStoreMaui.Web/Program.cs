@@ -1,4 +1,5 @@
 using BookStoreMaui.Shared.Interfaces;
+using BookStoreMaui.Web;
 using BookStoreMaui.Web.Components;
 using BookStoreMaui.Web.Data;
 using BookStoreMaui.Web.Services;
@@ -31,5 +32,7 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddAdditionalAssemblies(typeof(BookStoreMaui.Shared.Components.Pages.Books).Assembly);
+
+app.MapBookEndpoints();
 
 app.Run();
