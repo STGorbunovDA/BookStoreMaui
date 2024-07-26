@@ -2,6 +2,56 @@
 @inject IBookService BookService
 @inject ICommonService CommonService
 
+
+<style>
+    .btn-book {
+        /*position: relative;
+        display: inline-block;*/
+        font-size: 16px;
+        line-height: 30px;
+        color: #ffffff;
+        padding: 10px 44px 10px;
+        font-weight: 400;
+        border-radius: 50px;
+        background-color: var(--color-main);
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.10);
+    }
+
+    img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .genre-tag {
+        background-color: white;
+        color: var(--color-main);
+        padding: 5px 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: all ease 0.2s
+    }
+
+        .genre-tag:hover {
+            background-color: var(--color-main-light);
+            color: white;
+        }
+
+    .similar-book-title {
+        max-width: 100%;
+        color: #444;
+    }
+
+    .similarBooks-img {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+    }
+
+</style>
+
 <PageTitle>@_book?.Title</PageTitle>
 
 <SectionContent SectionName="PageTitle">
