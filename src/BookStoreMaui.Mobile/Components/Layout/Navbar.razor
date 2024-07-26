@@ -1,4 +1,26 @@
-﻿
-<div class="navbar bg-main fixed-top px-3 py-2">
-    <h1 class="m-0 text-white">BookStoreMaui</h1>
+﻿<div class="navbar bg-main fixed-top px-3 py-2">
+    @if (!IsInnerPage)
+    {
+        <h1 class="m-0 text-white">@ChildContent</h1>
+    }
+    else
+    {
+        <div class="row w-100">
+            <div class="col-1 d-flex">
+                <a href="" class="text-white h2 fw-bold my-auto">
+                    &larr;
+                </a>
+            </div>
+            <div class="col-11 d-flex">
+                <h3 class="m-0 text-white text-truncate my-auto">@ChildContent</h3>
+            </div>
+        </div>
+    }
 </div>
+
+@code {
+    [Parameter] public bool IsInnerPage { get; set; }
+
+    [Parameter, EditorRequired]
+    public RenderFragment ChildContent { get; set; }
+}

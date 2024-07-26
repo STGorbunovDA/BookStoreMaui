@@ -1,5 +1,6 @@
-﻿<h3>InnerPageLayout</h3>
+﻿@inherits LayoutComponentBase
 
-@code {
-
-}
+<Navbar IsInnerPage>
+    <SectionOutlet SectionName="PageTitle" />
+</Navbar>
+@Body
