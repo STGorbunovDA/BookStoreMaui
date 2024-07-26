@@ -3,11 +3,19 @@
 
 @inject NavigationManager NavigationManager
 @inject IBookService BookService
+@inject ICommonService CommonService
 
 <PageTitle>@_heading | BookStoreMaui</PageTitle>
 
 <SectionContent SectionName="PageTitle">
-    <h1 class="m-0 text-white fw-bold">@_heading</h1>
+    @if (CommonService.IsWeb)
+    {
+        <h1 class="m-0 text-white fw-bold">@_heading</h1>
+    }
+    else
+    {
+        <span>@_heading</span>
+    }
 </SectionContent>
 
 <div class="container-lg">
@@ -19,7 +27,7 @@
             </div>
         </div>
         <div class="col-md-3">
-           <PopularBooks PopularBooksList="_popularBooks" />
+            <PopularBooks PopularBooksList="_popularBooks" />
         </div>
     </div>
 </div>
@@ -40,7 +48,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        if(PageNo <= 0 || string.IsNullOrWhiteSpace(AuthorSlug))
+        if (PageNo <= 0 || string.IsNullOrWhiteSpace(AuthorSlug))
         {
             NavigationManager.NavigateTo("/");
             return;
@@ -52,7 +60,7 @@
 
         var author = _authorBooks.FirstOrDefault()?.Author;
 
-        if(author is not null)
+        if (author is not null)
         {
             _heading = $"Books by {author.Value.Name}";
         }

@@ -1,0 +1,7 @@
+﻿@page "/books/{bookId:int}"
+
+<BookStoreMaui.Shared.Components.Shared.BookDetailsComponent BookId="BookId" />
+
+@code {
+    [Parameter] public int BookId { get; set; }
+}

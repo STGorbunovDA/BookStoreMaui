@@ -33,7 +33,8 @@ namespace BookStoreMaui.Mobile
             builder.Logging.AddDebug();
 #endif
 
-            builder.Services.AddTransient<IBookService, ApiBookFetcher>();
+            builder.Services.AddTransient<IBookService, ApiBookFetcher>()
+                            .AddSingleton<ICommonService, CommonService>();
 
             ConfigureRefit(builder.Services);
 

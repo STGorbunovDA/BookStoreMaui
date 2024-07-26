@@ -1,0 +1,11 @@
+﻿@page "/books/{bookId:int}"
+
+@using BookStoreMaui.Mobile.Components.Layout
+
+@layout InnerPageLayout
+
+<BookStoreMaui.Shared.Components.Shared.BookDetailsComponent BookId="BookId" />
+
+@code {
+    [Parameter] public int BookId { get; set; }
+}
