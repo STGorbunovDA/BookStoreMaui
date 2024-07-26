@@ -1,11 +1,13 @@
 ﻿@inject NavigationManager NavigationManager
 
+@inject IBookService BookService
+
 <div class="tabbar d-flex justify-content-around align-items-center bg-white py-2 fixed-bottom">
     <a href="/" class="tab-link @ExploreClass">
         Explore
     </a>
 
-    <a role="button" @onclick="ShowTopGenres" class="tab-link">
+    <a role="button" @onclick="SelectGenreAsync" class="tab-link">
         Top Genres
     </a>
 
@@ -15,9 +17,12 @@
 </div>
 
 @code {
-    protected override void OnInitialized()
+    private GenreDto[] _topGenres = [];
+
+    protected override async Task OnInitializedAsync()
     {
         NavigationManager.LocationChanged += (_, __) => StateHasChanged();
+        _topGenres = await BookService.GetGenresAsync(topOnly: true);
     }
 
     private string ExploreClass
@@ -39,11 +44,24 @@
         }
     }
 
-    private string AllGenresClass => 
+    private string AllGenresClass =>
         NavigationManager.Uri.Contains("/genres") ? "active" : "";
 
-    private void ShowTopGenres()
+    private async Task SelectGenreAsync()
     {
+        string[] buttons = ["Top Books", .. _topGenres.Select(g => g.Name).ToArray()];
 
+        var selectedGenre = await App.Current!.MainPage!.DisplayActionSheet("Select Genre", "Cancel", null, buttons);
+
+        if(!string.IsNullOrWhiteSpace(selectedGenre) && selectedGenre != "Cancel")
+        {
+            if (selectedGenre == "Top Books")
+            {
+                NavigationManager.NavigateTo("/");
+                return;
+            }
+            var genreSlug = _topGenres.First(g => g.Name == selectedGenre).Slug;
+            NavigationManager.NavigateTo($"/?genre={genreSlug}");
+        }
     }
 }
