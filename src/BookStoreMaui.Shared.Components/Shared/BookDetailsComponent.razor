@@ -52,6 +52,19 @@
 
 </style>
 
+@if (CommonService.IsMobile)
+{
+    <style>
+        .fab {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 10px !important;
+        }
+    </style>
+}
+
 <PageTitle>@_book?.Title</PageTitle>
 
 <SectionContent SectionName="PageTitle">
@@ -140,6 +153,7 @@
         </div>
     </div>
 }
+
 
 
 @code {
