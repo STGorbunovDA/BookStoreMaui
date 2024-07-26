@@ -1,0 +1,17 @@
+﻿@page "/authors/{authorSlug}/books"
+@page "/authors/{authorSlug}/books/page/{pageNo:int?}"
+@using BookStoreMaui.Mobile.Components.Layout
+
+@layout InnerPageLayout
+
+<BookStoreMaui.Shared.Components.Shared.AuthorBooksComponent AuthorSlug="@AuthorSlug"
+                                                             PageNo="PageNo" />
+
+@code {
+
+    [Parameter] public string AuthorSlug { get; set; }
+
+    [Parameter] public int? PageNo { get; set; } = 1;
+
+   
+}

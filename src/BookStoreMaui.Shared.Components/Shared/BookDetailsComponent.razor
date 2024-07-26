@@ -2,6 +2,7 @@
 @inject IBookService BookService
 @inject ICommonService CommonService
 
+<PageTitle>@_book?.Title</PageTitle>
 
 <SectionContent SectionName="PageTitle">
     @if (CommonService.IsWeb)

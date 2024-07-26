@@ -1,7 +1,4 @@
-﻿@page "/authors/{authorSlug}/books"
-@page "/authors/{authorSlug}/books/page/{pageNo:int?}"
-
-@inject NavigationManager NavigationManager
+﻿@inject NavigationManager NavigationManager
 @inject IBookService BookService
 @inject ICommonService CommonService
 
@@ -36,7 +33,7 @@
 
     private const int PageSize = 16;
 
-    [Parameter] public string AuthorSlug { get; set; }
+    [Parameter, EditorRequired] public string AuthorSlug { get; set; }
 
     [Parameter] public int? PageNo { get; set; } = 1;
 
