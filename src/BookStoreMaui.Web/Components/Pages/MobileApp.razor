@@ -1,0 +1,28 @@
+﻿@page "/mobile-app"
+
+<PageTitle>Mobile App | BookStoreMaui</PageTitle>
+
+<SectionContent SectionName="PageTitle">
+    <h1 class="m-0 text-white fw-bold">Our Mobile App</h1>
+</SectionContent>
+
+<div class="container">
+    <div class="row">
+        @foreach (var img in _images)
+        {
+            <div class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center p-3">
+                <div class="shadow">
+                    <img src="@img" alt="BookStoreMaui Mobile App" class="img-fluid"/>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@code {
+    private string[] _images = Enumerable.Range(1, 9)
+                                         .Select(i => $"/images/img{i}.jpg")
+                                         .ToArray();
+}
