@@ -57,7 +57,7 @@
         {
             if (selectedGenre == "Top Books")
             {
-                NavigationManager.NavigateTo("/");
+                NavigationManager.NavigateTo("/?genre=");
                 return;
             }
             var genreSlug = _topGenres.First(g => g.Name == selectedGenre).Slug;

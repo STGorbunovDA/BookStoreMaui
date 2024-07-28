@@ -162,7 +162,7 @@
     private BookDetailsDto? _book;
     private BookListDto[] _similarBooks = [];
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
         if (BookId <= 0)
         {
