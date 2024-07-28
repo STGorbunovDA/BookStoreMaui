@@ -26,6 +26,13 @@
 <body>
     <Routes />
     <script src="_framework/blazor.web.js"></script>
+    <script type="text/javascript">
+        const navbarTogglerBtn = document.getElementById('navbar-toggler-btn');
+        const navbarNav = document.getElementById('navbarNav');
+        navbarTogglerBtn.addEventListener('click', () => {
+            navbarNav.classList.toggle('show');
+        });
+    </script>
 </body>
 
 </html>
