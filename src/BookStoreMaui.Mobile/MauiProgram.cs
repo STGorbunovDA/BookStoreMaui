@@ -1,5 +1,6 @@
 ﻿using BookStoreMaui.Mobile.Services;
 using BookStoreMaui.Shared.Interfaces;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Refit;
 
@@ -24,7 +25,8 @@ namespace BookStoreMaui.Mobile
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                });
+                })
+                .UseMauiCommunityToolkit();
 
             builder.Services.AddMauiBlazorWebView();
 
