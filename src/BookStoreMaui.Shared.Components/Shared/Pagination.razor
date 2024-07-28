@@ -1,0 +1,37 @@
+﻿@if (PrevPageUrl is not null)
+{
+    // There is previous page
+    <a href="@PrevPageUrl" class="btn btn-sm btn-primary me-3">
+        &larr; Prev
+    </a>
+}
+else
+{
+    // There is no previous page
+    <button type="button" disabled class="btn btn-sm btn-primary me-3">
+        &larr; Prev
+    </button>
+}
+
+@if (NextPageUrl is not null)
+{
+    // There is next page
+    <a href="@NextPageUrl" class="btn btn-sm btn-primary">
+        Next &rarr;
+    </a>
+}
+else
+{
+    // There is no next page
+    <button type="button" disabled class="btn btn-sm btn-primary">
+       Next &rarr;
+    </button>
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public string PrevPageUrl { get; set; }
+
+    [Parameter, EditorRequired]
+    public string NextPageUrl { get; set; }
+}

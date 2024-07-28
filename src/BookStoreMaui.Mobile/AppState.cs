@@ -46,8 +46,8 @@ namespace BookStoreMaui.Mobile
 
         public void HideLoader()
         {
-            //LoaderMessage = "Processing...";
-            //IsLoaderVisible = false;
+            LoaderMessage = "Processing...";
+            IsLoaderVisible = false;
         }
     }
 }

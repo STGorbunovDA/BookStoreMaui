@@ -21,6 +21,22 @@
             <div class="row">
                 <h3 class="mt-2 mb-3 heading">@_heading</h3>
                 <BooksGrid Books="_authorBooks" />
+
+                <div class="paging w-100">
+                    @if (CommonService.IsWeb)
+                    {
+                        <div class="d-flex justify-content-end align-items-center">
+                            <Pagination NextPageUrl="@_nextPageUrl" PrevPageUrl="@_prevPageUrl" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex justify-content-between align-items-center">
+                            <Pagination NextPageUrl="@_nextPageUrl" PrevPageUrl="@_prevPageUrl" />
+                        </div>
+                    }
+                </div>
+
             </div>
         </div>
         <div class="col-md-3">
@@ -35,17 +51,20 @@
 
     [Parameter, EditorRequired] public string AuthorSlug { get; set; }
 
-    [Parameter] public int? PageNo { get; set; } = 1;
+    [Parameter] public int? PageNo { get; set; }
 
     private BookListDto[] _authorBooks = [];
     private BookListDto[] _popularBooks = [];
     private int _totalCount = 0;
 
+    private string? _prevPageUrl;
+    private string? _nextPageUrl;
+
     private string _heading = "Author Books";
 
     protected override async Task OnParametersSetAsync()
     {
-        if (PageNo <= 0 || string.IsNullOrWhiteSpace(AuthorSlug))
+        if (PageNo <= 0 || string.IsNullOrWhiteSpace(AuthorSlug) || PageNo < 2)
         {
             NavigationManager.NavigateTo("/");
             return;
@@ -57,13 +76,67 @@
 
         _popularBooks = await BookService.GetPopularBooksAsync(10);
 
-        var author = _authorBooks.FirstOrDefault()?.Author;
+        SetPagingUrls();
 
+        var author = _authorBooks.FirstOrDefault()?.Author;
         if (author is not null)
         {
             _heading = $"Books by {author.Value.Name}";
         }
 
+        if (PageNo > 1)
+        {
+            _heading += $" | Page {PageNo}";
+        }
+
         CommonService.HideLoader();
+    }
+
+    private void SetPagingUrls()
+    {
+        var currentPageBookCount = _authorBooks.Length;
+
+        var parts = NavigationManager.Uri.Split('?');
+        var queryString = "";
+        if (parts.Length > 1)
+        {
+            queryString = $"?{parts[1]}";
+        }
+
+        if (PageNo is null || PageNo == 1)
+        {
+            _prevPageUrl = null;
+
+            if (currentPageBookCount < PageSize)
+            {
+                // У нас есть только страница, на ней больше нет записей
+                // поэтому следующей страницы у нас не будет
+                _nextPageUrl = null;
+            }
+            else
+                _nextPageUrl = $"/page/2{queryString}";
+        }
+        else
+        {
+            if (PageNo > 2)
+            {
+                _prevPageUrl = $"/page/{(PageNo - 1)}{queryString}";
+            }
+            else
+            {
+                _prevPageUrl = $"/{queryString}";
+            }
+
+
+            if (currentPageBookCount < PageSize)
+            {
+                // У нас есть только страница, на ней больше нет записей
+                // поэтому следующей страницы у нас не будет
+                _nextPageUrl = null;
+            }
+            else
+                _nextPageUrl = $"/page/{(PageNo + 1)}{queryString}";
+
+        }
     }
 }
