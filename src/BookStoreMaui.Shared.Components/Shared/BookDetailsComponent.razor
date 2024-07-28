@@ -170,9 +170,13 @@
             return;
         }
 
+        CommonService.ShowLoader("Fetching book details...");
+
         _book = await BookService.GetBookAsync(BookId);
         var similarBooksTask = BookService.GetSimilarBookAsync(BookId, count: 6);
         _similarBooks = await similarBooksTask;
+
+        CommonService.HideLoader();
 
         if (_book is null)
         {

@@ -38,6 +38,8 @@ namespace BookStoreMaui.Mobile
             builder.Services.AddTransient<IBookService, ApiBookFetcher>()
                             .AddSingleton<ICommonService, CommonService>();
 
+            builder.Services.AddSingleton<AppState>();
+
             ConfigureRefit(builder.Services);
 
             return builder.Build();

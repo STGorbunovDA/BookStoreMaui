@@ -43,13 +43,15 @@
 
     private string _heading = "Author Books";
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
         if (PageNo <= 0 || string.IsNullOrWhiteSpace(AuthorSlug))
         {
             NavigationManager.NavigateTo("/");
             return;
         }
+
+        CommonService.ShowLoader("Fetching author books...");
 
         (_authorBooks, _totalCount) = await BookService.GetBooksByAuthorAsync(PageNo ?? 1, PageSize, AuthorSlug);
 
@@ -61,5 +63,7 @@
         {
             _heading = $"Books by {author.Value.Name}";
         }
+
+        CommonService.HideLoader();
     }
 }

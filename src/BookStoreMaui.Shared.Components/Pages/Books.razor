@@ -126,6 +126,7 @@
 
     protected override async Task OnParametersSetAsync()
     {
+        CommonService.ShowLoader("Fetching...");
         var genreTask = BookService.GetGenresAsync(topOnly: false);
         var booksTask = BookService.GetBooksAsync(PageNo ?? 1, PageSize, GenreSlug);
         var popularTask = BookService.GetPopularBooksAsync(10, GenreSlug);
@@ -150,5 +151,6 @@
         {
             _heading = "Top Books";
         }
+        CommonService.HideLoader();
     }
 }
